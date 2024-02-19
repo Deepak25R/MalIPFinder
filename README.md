@@ -8,7 +8,6 @@ This Python script checks a list of IP addresses against the AbuseIPDB API to de
 ### Features:
 - Utilizes the AbuseIPDB API to check IP addresses for malicious activity.
 - Provides detailed information about each IP address, including abuse confidence score, country, usage type, and ISP.
-- Filters non-malicious IP addresses and saves them to a separate file.
 - Displays a progress bar to track the status of IP address checks.
 - Includes an ASCII art banner for a visually appealing display.
 
