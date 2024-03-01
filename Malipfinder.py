@@ -25,15 +25,15 @@ def check_ip_malicious(ip_address, api_key):
     
     if response.status_code == 200:
         data = response.json()
-        is_malicious = data['data']['isWhitelisted']
-        if is_malicious:
-            result = f"The IP address {ip_address} is not malicious.\n"
-        else:
+        abuse_confidence_score = data['data']['abuseConfidenceScore']
+        if abuse_confidence_score > 20:
             result = f"The IP address {ip_address} is malicious.\n"
-            result += "Abuse confidence score: " + str(data['data']['abuseConfidenceScore']) + "\n"
+            result += "Abuse confidence score: " + str(abuse_confidence_score) + "\n"
             result += "Country: " + str(data['data']['countryCode']) + "\n"
             result += "Usage Type: " + str(data['data']['usageType']) + "\n"
             result += "ISP: " + str(data['data']['isp']) + "\n"
+        else:
+            result = f"The IP address {ip_address} is not malicious.\n"
     else:
         result = "Error occurred while checking IP status: " + response.text + "\n"
     
